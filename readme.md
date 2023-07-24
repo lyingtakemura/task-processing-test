@@ -1,4 +1,4 @@
-### META:
+### META
 ```
 - celery periodic check is set to run every one minute
 
@@ -17,7 +17,7 @@ filter out from tasks all object where waiting_time timestamp is less then or eq
 ```
 docker compose up
 ```
-### ENPOINTS (drf browsable api):
+### ENPOINTS
 ```
 - GET http://127.0.0.1:8000/tasks/
 - GET http://127.0.0.1:8000/tasks/TASK_ID
