@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "django_celery_beat",
     "tasks",
 ]
 
@@ -107,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Europe/Kiev"
 
 USE_I18N = True
 
@@ -126,3 +127,13 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CELERY_BROKER_URL = "redis://localhost:6379"
 CELERY_RESULT_BACKEND = "redis://localhost:6379"
+
+
+from celery.schedules import crontab
+
+CELERY_BEAT_SCHEDULE = {
+    "UPDATE_STATUS_IF_WAITING_TIME_IS_EXPIRED": {
+        "task": "tasks.tasks.update_status_if_waiting_time_is_expired",
+        "schedule": crontab("*/1"),
+    },
+}
