@@ -8,3 +8,8 @@ current time + timedelta = waiting_time
 
 tasks.py/update_status_if_waiting_time_is_expired:
 filter out from tasks all object where waiting_time timestamp is less then or equals to current_time (by the moment of celery periodic run), if there's any - update in bulk statuses to 'done'
+
+endpoints (drf browsable api is available):
+- GET http://localhost:8000/tasks/
+- GET http://localhost:8000/tasks/TASK_ID
+- POST http://localhost:8000/tasks/
