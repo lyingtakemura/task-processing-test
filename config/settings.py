@@ -143,10 +143,8 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CELERY_BROKER_URL = env("CELERY_BROKER_URL")
-CELERY_RESULT_BACKEND = env("CELERY_RESULT_BACKEND")
-
-
+CELERY_BROKER_URL = env("REDIS_HOST")
+CELERY_RESULT_BACKEND = env("REDIS_HOST")
 CELERY_BEAT_SCHEDULE = {
     "UPDATE_STATUS_IF_WAITING_TIME_IS_EXPIRED": {
         "task": "tasks.tasks.update_status_if_waiting_time_is_expired",
